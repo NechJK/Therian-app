@@ -1,0 +1,108 @@
+#!/bin/bash
+
+echo "🐺 Configurando Kindred automáticamente..."
+echo "=========================================="
+
+# Colores
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+# Verificar que existe el archivo SQL
+if [ ! -f "supabase-schema.sql" ]; then
+    echo "❌ Error: No se encuentra supabase-schema.sql"
+    exit 1
+fi
+
+echo ""
+echo -e "${BLUE}📋 Paso 1: Verificando credenciales...${NC}"
+
+if [ ! -f ".env" ]; then
+    echo "❌ Error: No existe el archivo .env"
+    exit 1
+fi
+
+echo -e "${GREEN}✅ Archivo .env encontrado${NC}"
+
+echo ""
+echo -e "${YELLOW}⚠️  IMPORTANTE:${NC}"
+echo "Ahora debes completar estos pasos manualmente en Supabase:"
+echo ""
+echo "=========================================="
+echo "PASO 1: EJECUTAR SQL"
+echo "=========================================="
+echo ""
+echo "1. Abre: https://supabase.com/dashboard/project/rkrbaciaknxugdpefycs/sql/new"
+echo ""
+echo "2. Copia TODO el contenido del archivo: supabase-schema.sql"
+echo "   (Puedes abrirlo con: cat supabase-schema.sql)"
+echo ""
+echo "3. Pégalo en el SQL Editor de Supabase"
+echo ""
+echo "4. Click en el botón verde 'Run' (abajo a la derecha)"
+echo ""
+echo "5. Deberías ver: '✓ Success. No rows returned'"
+echo ""
+echo "=========================================="
+echo "PASO 2: CREAR BUCKET DE FOTOS"
+echo "=========================================="
+echo ""
+echo "1. Abre: https://supabase.com/dashboard/project/rkrbaciaknxugdpefycs/storage/buckets"
+echo ""
+echo "2. Click en 'Create a new bucket'"
+echo ""
+echo "3. Completa:"
+echo "   - Name: photos"
+echo "   - ✓ Marca 'Public bucket'"
+echo ""
+echo "4. Click 'Create bucket'"
+echo ""
+echo "=========================================="
+echo "PASO 3: POLÍTICAS DE STORAGE"
+echo "=========================================="
+echo ""
+echo "1. Click en el bucket 'photos' que acabas de crear"
+echo ""
+echo "2. Ve a la pestaña 'Policies' (arriba)"
+echo ""
+echo "3. Click 'New Policy' → 'For full customization'"
+echo ""
+echo "4. Crea la primera política (INSERT):"
+echo ""
+echo "   Policy name: Usuarios pueden subir fotos"
+echo "   Allowed operation: INSERT"
+echo "   Target roles: authenticated"
+echo ""
+echo "   WITH CHECK (bucket_id = 'photos')"
+echo ""
+echo "5. Click 'Review' → 'Save policy'"
+echo ""
+echo "6. Crea la segunda política (SELECT):"
+echo ""
+echo "   Policy name: Fotos públicas"
+echo "   Allowed operation: SELECT"
+echo "   Target roles: public"
+echo ""
+echo "   USING (bucket_id = 'photos')"
+echo ""
+echo "7. Click 'Review' → 'Save policy'"
+echo ""
+echo "=========================================="
+echo "PASO 4: HABILITAR REALTIME"
+echo "=========================================="
+echo ""
+echo "1. Abre: https://supabase.com/dashboard/project/rkrbaciaknxugdpefycs/database/replication"
+echo ""
+echo "2. Busca la tabla 'messages'"
+echo ""
+echo "3. Activa el toggle para que quede en ON (azul)"
+echo ""
+echo "=========================================="
+echo ""
+echo -e "${GREEN}Una vez completados todos los pasos, ejecuta:${NC}"
+echo ""
+echo "  npm run dev"
+echo ""
+echo "¡Y tu app estará lista! 🎉"
+echo ""

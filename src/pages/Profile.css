@@ -1,0 +1,155 @@
+.profile-page {
+  min-height: 100vh;
+  padding: 20px 20px 100px;
+  background: var(--bg-primary);
+}
+
+.profile-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.profile-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.icon-button {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+}
+
+.icon-button:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.profile-photos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 24px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.profile-photos img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.profile-info {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.info-section {
+  margin-bottom: 24px;
+}
+
+.info-section:last-child {
+  margin-bottom: 0;
+}
+
+.info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.info-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.edit-button {
+  background: transparent;
+  color: var(--gold);
+}
+
+.info-section h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.info-section p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.theriotype-display {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(200, 169, 110, 0.1);
+  border: 2px solid var(--gold);
+  padding: 12px 20px;
+  border-radius: 24px;
+}
+
+.theriotype-display .theriotype-emoji {
+  font-size: 1.5rem;
+}
+
+.theriotype-display .theriotype-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.intentions-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.intention-badge {
+  background: var(--bg-tertiary);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.profile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.no-profile {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.no-profile h2 {
+  font-size: 1.5rem;
+  margin-bottom: 24px;
+  color: var(--text-secondary);
+}

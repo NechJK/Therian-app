@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurar Kindred - Instrucciones Fáciles</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #0F0F12;
+            color: #FFFFFF;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #C8A96E;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #A0A0A8;
+            margin-bottom: 40px;
+        }
+
+        .step {
+            background: #1A1A1F;
+            border: 2px solid #2D2D35;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .step-number {
+            background: #C8A96E;
+            color: #0F0F12;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 12px;
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .link {
+            background: #25252D;
+            padding: 12px 16px;
+            border-radius: 8px;
+            color: #60A5FA;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px 0;
+            border: 1px solid #2D2D35;
+        }
+
+        .link:hover {
+            background: #2D2D35;
+            border-color: #C8A96E;
+        }
+
+        .code-block {
+            background: #0a0a0c;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 1px solid #2D2D35;
+            position: relative;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .code-block pre {
+            color: #4ADE80;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .copy-btn {
+            background: #C8A96E;
+            color: #0F0F12;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .copy-btn:hover {
+            background: #D4B87E;
+        }
+
+        .copy-btn:active {
+            transform: scale(0.95);
+        }
+
+        .success {
+            background: rgba(74, 222, 128, 0.1);
+            border: 1px solid #4ADE80;
+            color: #4ADE80;
+            padding: 12px;
+            border-radius: 8px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .checklist {
+            margin-top: 20px;
+        }
+
+        .checklist-item {
+            padding: 12px;
+            margin: 8px 0;
+            background: #25252D;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .checklist-item input {
+            margin-right: 12px;
+            width: 20px;
+            height: 20px;
+        }
+
+        .warning {
+            background: rgba(251, 191, 36, 0.1);
+            border: 1px solid #FBBF24;
+            color: #FBBF24;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin: 8px 0;
+            color: #A0A0A8;
+        }
+
+        .final-btn {
+            background: #4ADE80;
+            color: #0F0F12;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .final-btn:hover {
+            background: #5EE894;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐺 Configurar Kindred</h1>
+        <p class="subtitle">Sigue estos 4 pasos simples. Todo está listo, solo necesitas configurar Supabase.</p>
+
+        <!-- PASO 1 -->
+        <div class="step">
+            <div class="step-title">
+                <span class="step-number">1</span>
+                <span>Ejecutar SQL en Supabase</span>
+            </div>
+
+            <p>Abre el SQL Editor de tu proyecto Supabase:</p>
+            <a href="https://supabase.com/dashboard/project/rkrbaciaknxugdpefycs/sql/new" target="_blank" class="link">
+                🔗 Abrir SQL Editor →
+            </a>
+
+            <p style="margin-top: 20px;">Copia este SQL completo:</p>
+            <div class="code-block">
+                <pre id="sqlCode">-- Kindred Database Schema
+-- Este script debe ejecutarse en el SQL Editor de Supabase
+
+-- Tabla de perfiles de usuario
+CREATE TABLE profiles (
+  id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE UNIQUE NOT NULL,
+  name TEXT NOT NULL,
+  age INTEGER NOT NULL CHECK (age >= 18 AND age <= 45),
+  bio TEXT,
+  theriotype TEXT NOT NULL,
+  photos TEXT[] NOT NULL,
+  intentions TEXT[],
+  gender TEXT,
+  orientation TEXT,
+  location JSONB,
+  is_active BOOLEAN DEFAULT true,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Tabla de swipes (likes/nopes)
+CREATE TABLE swipes (
+  id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  swiper_id UUID REFERENCES auth.users(id) ON DELETE CASCADE NOT NULL,
+  swiped_id UUID REFERENCES auth.users(id) ON DELETE CASCADE NOT NULL,
+  direction TEXT NOT NULL CHECK (direction IN ('like', 'nope', 'super')),
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  UNIQUE(swiper_id, swiped_id)
+);
+
+-- Tabla de matches
+CREATE TABLE matches (
+  id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  user_a_id UUID REFERENCES auth.users(id) ON DELETE CASCADE NOT NULL,
+  user_b_id UUID REFERENCES auth.users(id) ON DELETE CASCADE NOT NULL,
+  is_active BOOLEAN DEFAULT true,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  UNIQUE(user_a_id, user_b_id),
+  CHECK (user_a_id < user_b_id)
+);
+
+-- Tabla de mensajes
+CREATE TABLE messages (
+  id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  match_id UUID REFERENCES matches(id) ON DELETE CASCADE NOT NULL,
+  sender_id UUID REFERENCES auth.users(id) ON DELETE CASCADE NOT NULL,
+  content TEXT NOT NULL,
+  read_at TIMESTAMP WITH TIME ZONE,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Tabla de theriotypes (opcional, para referencia)
+CREATE TABLE theriotypes (
+  id TEXT PRIMARY KEY,
+  name TEXT NOT NULL,
+  emoji TEXT NOT NULL,
+  category TEXT NOT NULL
+);
+
+-- Insertar theriotypes predefinidos
+INSERT INTO theriotypes (id, name, emoji, category) VALUES
+('wolf', 'Lobo', '🐺', 'mammal'),
+('fox', 'Zorro', '🦊', 'mammal'),
+('cat', 'Gato', '🐱', 'mammal'),
+('dog', 'Perro', '🐕', 'mammal'),
+('bear', 'Oso', '🐻', 'mammal'),
+('lion', 'León', '🦁', 'mammal'),
+('tiger', 'Tigre', '🐯', 'mammal'),
+('deer', 'Ciervo', '🦌', 'mammal'),
+('rabbit', 'Conejo', '🐰', 'mammal'),
+('raccoon', 'Mapache', '🦝', 'mammal'),
+('bat', 'Murciélago', '🦇', 'mammal'),
+('otter', 'Nutria', '🦦', 'mammal'),
+('horse', 'Caballo', '🐴', 'mammal'),
+('owl', 'Búho', '🦉', 'bird'),
+('eagle', 'Águila', '🦅', 'bird'),
+('crow', 'Cuervo', '🐦‍⬛', 'bird'),
+('raven', 'Cuervo (Raven)', '🐦', 'bird'),
+('snake', 'Serpiente', '🐍', 'reptile'),
+('dragon', 'Dragón', '🐉', 'mythical'),
+('phoenix', 'Fénix', '🔥', 'mythical'),
+('other', 'Otro', '✨', 'other');
+
+-- Índices para mejor performance
+CREATE INDEX idx_profiles_user_id ON profiles(user_id);
+CREATE INDEX idx_profiles_is_active ON profiles(is_active);
+CREATE INDEX idx_swipes_swiper ON swipes(swiper_id);
+CREATE INDEX idx_swipes_swiped ON swipes(swiped_id);
+CREATE INDEX idx_matches_user_a ON matches(user_a_id);
+CREATE INDEX idx_matches_user_b ON matches(user_b_id);
+CREATE INDEX idx_messages_match ON messages(match_id);
+CREATE INDEX idx_messages_sender ON messages(sender_id);
+CREATE INDEX idx_messages_created ON messages(created_at DESC);
+
+-- Habilitar Row Level Security (RLS)
+ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
+ALTER TABLE swipes ENABLE ROW LEVEL SECURITY;
+ALTER TABLE matches ENABLE ROW LEVEL SECURITY;
+ALTER TABLE messages ENABLE ROW LEVEL SECURITY;
+
+-- Políticas RLS para profiles
+CREATE POLICY "Los usuarios pueden ver perfiles activos"
+  ON profiles FOR SELECT
+  USING (is_active = true);
+
+CREATE POLICY "Los usuarios pueden insertar su propio perfil"
+  ON profiles FOR INSERT
+  WITH CHECK (auth.uid() = user_id);
+
+CREATE POLICY "Los usuarios pueden actualizar su propio perfil"
+  ON profiles FOR UPDATE
+  USING (auth.uid() = user_id);
+
+-- Políticas RLS para swipes
+CREATE POLICY "Los usuarios pueden ver sus propios swipes"
+  ON swipes FOR SELECT
+  USING (auth.uid() = swiper_id);
+
+CREATE POLICY "Los usuarios pueden crear swipes"
+  ON swipes FOR INSERT
+  WITH CHECK (auth.uid() = swiper_id);
+
+-- Políticas RLS para matches
+CREATE POLICY "Los usuarios pueden ver sus matches"
+  ON matches FOR SELECT
+  USING (auth.uid() = user_a_id OR auth.uid() = user_b_id);
+
+CREATE POLICY "El sistema puede crear matches"
+  ON matches FOR INSERT
+  WITH CHECK (true);
+
+-- Políticas RLS para messages
+CREATE POLICY "Los usuarios pueden ver mensajes de sus matches"
+  ON messages FOR SELECT
+  USING (
+    EXISTS (
+      SELECT 1 FROM matches
+      WHERE matches.id = messages.match_id
+      AND (matches.user_a_id = auth.uid() OR matches.user_b_id = auth.uid())
+    )
+  );
+
+CREATE POLICY "Los usuarios pueden enviar mensajes en sus matches"
+  ON messages FOR INSERT
+  WITH CHECK (
+    auth.uid() = sender_id
+    AND EXISTS (
+      SELECT 1 FROM matches
+      WHERE matches.id = match_id
+      AND (matches.user_a_id = auth.uid() OR matches.user_b_id = auth.uid())
+    )
+  );
+
+-- Función para actualizar updated_at automáticamente
+CREATE OR REPLACE FUNCTION update_updated_at_column()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updated_at = NOW();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- Trigger para actualizar updated_at en profiles
+CREATE TRIGGER update_profiles_updated_at
+  BEFORE UPDATE ON profiles
+  FOR EACH ROW
+  EXECUTE FUNCTION update_updated_at_column();
+
+-- Habilitar Realtime para mensajes
+ALTER PUBLICATION supabase_realtime ADD TABLE messages;</pre>
+            </div>
+            <button class="copy-btn" onclick="copiarSQL()">📋 Copiar SQL</button>
+            <div class="success" id="sqlSuccess">✅ SQL copiado! Ahora pégalo en Supabase y dale Run</div>
+
+            <div class="warning" style="margin-top: 20px;">
+                ⚠️ Después de pegar: Click en el botón verde "Run" (abajo a la derecha)
+            </div>
+        </div>
+
+        <!-- PASO 2 -->
+        <div class="step">
+            <div class="step-title">
+                <span class="step-number">2</span>
+                <span>Crear Bucket de Fotos</span>
+            </div>
+
+            <p>Abre Storage en tu proyecto Supabase:</p>
+            <a href="https://supabase.com/dashboard/project/rkrbaciaknxugdpefycs/storage/buckets" target="_blank" class="link">
+                🔗 Abrir Storage →
+            </a>
+
+            <ul>
+                <li>Click en "Create a new bucket"</li>
+                <li><strong>Name:</strong> photos</li>
+                <li>✅ <strong>Marca "Public bucket"</strong> (muy importante)</li>
+                <li>Click "Create bucket"</li>
+            </ul>
+        </div>
+
+        <!-- PASO 3 -->
+        <div class="step">
+            <div class="step-title">
+                <span class="step-number">3</span>
+                <span>Políticas de Storage</span>
+            </div>
+
+            <p>En Storage, click en el bucket "photos" → Pestaña "Policies"</p>
+
+            <h3 style="margin-top: 20px; color: #C8A96E;">Política 1: INSERT (subir fotos)</h3>
+            <p>New Policy → For full customization:</p>
+            <div class="code-block">
+                <pre id="policy1">Policy name: Usuarios pueden subir fotos
+Allowed operation: INSERT
+Target roles: authenticated
+
+WITH CHECK (bucket_id = 'photos')</pre>
+            </div>
+            <button class="copy-btn" onclick="copiarPolicy1()">📋 Copiar política 1</button>
+            <div class="success" id="policy1Success">✅ Copiado!</div>
+
+            <h3 style="margin-top: 30px; color: #C8A96E;">Política 2: SELECT (ver fotos)</h3>
+            <p>New Policy → For full customization:</p>
+            <div class="code-block">
+                <pre id="policy2">Policy name: Fotos públicas
+Allowed operation: SELECT
+Target roles: public
+
+USING (bucket_id = 'photos')</pre>
+            </div>
+            <button class="copy-btn" onclick="copiarPolicy2()">📋 Copiar política 2</button>
+            <div class="success" id="policy2Success">✅ Copiado!</div>
+        </div>
+
+        <!-- PASO 4 -->
+        <div class="step">
+            <div class="step-title">
+                <span class="step-number">4</span>
+                <span>Habilitar Realtime</span>
+            </div>
+
+            <p>Abre Database → Replication:</p>
+            <a href="https://supabase.com/dashboard/project/rkrbaciaknxugdpefycs/database/replication" target="_blank" class="link">
+                🔗 Abrir Replication →
+            </a>
+
+            <ul>
+                <li>Busca la tabla <strong>"messages"</strong></li>
+                <li>Activa el toggle para que quede en <strong>ON</strong> (azul)</li>
+            </ul>
+        </div>
+
+        <!-- CHECKLIST FINAL -->
+        <div class="step">
+            <div class="step-title">
+                <span style="font-size: 2rem;">✅</span>
+                <span>Checklist Final</span>
+            </div>
+
+            <div class="checklist">
+                <div class="checklist-item">
+                    <input type="checkbox" id="check1">
+                    <label for="check1">SQL ejecutado en SQL Editor</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check2">
+                    <label for="check2">Bucket "photos" creado (público)</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check3">
+                    <label for="check3">Política INSERT creada</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check4">
+                    <label for="check4">Política SELECT creada</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check5">
+                    <label for="check5">Realtime habilitado para "messages"</label>
+                </div>
+            </div>
+
+            <div class="warning" style="margin-top: 20px;">
+                <strong>🎉 ¿Todo marcado?</strong><br>
+                Abre tu terminal y ejecuta:
+                <div class="code-block" style="margin-top: 10px;">
+                    <pre>cd "/Users/jinkunchen/Therian app/kindred"
+npm run dev</pre>
+                </div>
+            </div>
+
+            <p style="margin-top: 20px; text-align: center; color: #A0A0A8;">
+                La app se abrirá en <strong>http://localhost:5173</strong>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function copiarSQL() {
+            const text = document.getElementById('sqlCode').textContent;
+            navigator.clipboard.writeText(text);
+            document.getElementById('sqlSuccess').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('sqlSuccess').style.display = 'none';
+            }, 3000);
+        }
+
+        function copiarPolicy1() {
+            const text = "WITH CHECK (bucket_id = 'photos')";
+            navigator.clipboard.writeText(text);
+            document.getElementById('policy1Success').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('policy1Success').style.display = 'none';
+            }, 3000);
+        }
+
+        function copiarPolicy2() {
+            const text = "USING (bucket_id = 'photos')";
+            navigator.clipboard.writeText(text);
+            document.getElementById('policy2Success').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('policy2Success').style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
