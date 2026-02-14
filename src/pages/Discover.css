@@ -3,8 +3,9 @@
   padding: 20px 20px 100px;
   background: var(--bg-primary);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  padding-top: 40px;
 }
 
 .discover-container {
@@ -28,8 +29,9 @@
 .card-image {
   position: relative;
   width: 100%;
-  aspect-ratio: 3/4;
+  aspect-ratio: 2/3;
   overflow: hidden;
+  max-height: 60vh;
 }
 
 .card-image img {
