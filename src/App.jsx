@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider, useAuth } from './hooks/useAuth'
 import BottomNav from './components/BottomNav'
+import ProfileCheck from './components/ProfileCheck'
 
 // Pages
 import Welcome from './pages/Welcome'
@@ -79,31 +80,39 @@ function App() {
 
           <Route path="/discover" element={
             <ProtectedRoute>
-              <AppLayout>
-                <Discover />
-              </AppLayout>
+              <ProfileCheck>
+                <AppLayout>
+                  <Discover />
+                </AppLayout>
+              </ProfileCheck>
             </ProtectedRoute>
           } />
 
           <Route path="/matches" element={
             <ProtectedRoute>
-              <AppLayout>
-                <Matches />
-              </AppLayout>
+              <ProfileCheck>
+                <AppLayout>
+                  <Matches />
+                </AppLayout>
+              </ProfileCheck>
             </ProtectedRoute>
           } />
 
           <Route path="/profile" element={
             <ProtectedRoute>
-              <AppLayout>
-                <Profile />
-              </AppLayout>
+              <ProfileCheck>
+                <AppLayout>
+                  <Profile />
+                </AppLayout>
+              </ProfileCheck>
             </ProtectedRoute>
           } />
 
           <Route path="/chat/:matchId" element={
             <ProtectedRoute>
-              <Chat />
+              <ProfileCheck>
+                <Chat />
+              </ProfileCheck>
             </ProtectedRoute>
           } />
 

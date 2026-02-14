@@ -55,7 +55,7 @@ export const LIMITS = {
   MAX_PHOTOS: 6,
   MIN_PHOTOS: 1,
   MIN_AGE: 18,
-  MAX_AGE: 45
+  MAX_AGE: 100
 }
 
 // Colores del tema
