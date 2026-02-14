@@ -132,59 +132,61 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 16px;
-  padding: 20px;
+  gap: 20px;
+  padding: 24px 20px 32px;
 }
 
 .action-btn {
-  width: 56px;
-  height: 56px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: all 0.15s ease;
   border: none;
   cursor: pointer;
+  background: white;
 }
 
 .action-btn:active {
-  transform: scale(0.9);
+  transform: scale(0.92);
 }
 
 .action-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .nope-btn {
-  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
-  color: white;
+  color: #fe3c72;
+  width: 55px;
+  height: 55px;
 }
 
 .nope-btn:hover {
-  background: linear-gradient(135deg, #ff8585 0%, #ff6b7a 100%);
+  background: #fff5f7;
 }
 
 .like-btn {
-  background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
-  color: white;
-  width: 64px;
-  height: 64px;
+  color: #00d39f;
+  width: 70px;
+  height: 70px;
 }
 
 .like-btn:hover {
-  background: linear-gradient(135deg, #5ef094 0%, #34d76e 100%);
+  background: #f0fdf9;
 }
 
 .super-btn {
-  background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
-  color: white;
+  color: #17bef0;
+  width: 55px;
+  height: 55px;
 }
 
 .super-btn:hover {
-  background: linear-gradient(135deg, #70b5ff 0%, #4b92ff 100%);
+  background: #f0f9ff;
 }
 
 .no-profiles {
@@ -347,13 +349,24 @@
 }
 
 @media (max-width: 480px) {
+  .action-buttons {
+    gap: 16px;
+    padding: 20px 20px 28px;
+  }
+
   .action-btn {
-    width: 56px;
-    height: 56px;
+    width: 55px;
+    height: 55px;
+  }
+
+  .nope-btn,
+  .super-btn {
+    width: 50px;
+    height: 50px;
   }
 
   .like-btn {
-    width: 64px;
-    height: 64px;
+    width: 65px;
+    height: 65px;
   }
 }

@@ -12,6 +12,7 @@ import Discover from './pages/Discover'
 import Matches from './pages/Matches'
 import Chat from './pages/Chat'
 import Profile from './pages/Profile'
+import EditProfile from './pages/EditProfile'
 
 // Protected route wrapper
 const ProtectedRoute = ({ children }) => {
@@ -104,6 +105,14 @@ function App() {
                 <AppLayout>
                   <Profile />
                 </AppLayout>
+              </ProfileCheck>
+            </ProtectedRoute>
+          } />
+
+          <Route path="/edit-profile" element={
+            <ProtectedRoute>
+              <ProfileCheck>
+                <EditProfile />
               </ProfileCheck>
             </ProtectedRoute>
           } />

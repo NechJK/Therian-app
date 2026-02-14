@@ -219,22 +219,25 @@ const Discover = () => {
           <button
             className="action-btn nope-btn"
             onClick={() => handleSwipe('nope')}
+            aria-label="Nope"
           >
-            <X size={32} />
+            <X size={28} strokeWidth={3} />
           </button>
 
           <button
             className="action-btn super-btn"
             onClick={() => handleSwipe('super')}
+            aria-label="Super Like"
           >
-            <Star size={24} />
+            <Star size={28} fill="currentColor" strokeWidth={2} />
           </button>
 
           <button
             className="action-btn like-btn"
             onClick={() => handleSwipe('like')}
+            aria-label="Like"
           >
-            <Heart size={32} />
+            <Heart size={28} fill="currentColor" strokeWidth={2} />
           </button>
         </div>
       </div>

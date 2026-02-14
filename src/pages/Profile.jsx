@@ -93,7 +93,7 @@ const Profile = () => {
           <div className="info-section">
             <div className="info-header">
               <h2>{profile.name}, {profile.age}</h2>
-              <button className="edit-button">
+              <button className="edit-button" onClick={() => navigate('/edit-profile')}>
                 <Edit size={20} />
               </button>
             </div>
