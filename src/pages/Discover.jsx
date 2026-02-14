@@ -183,6 +183,25 @@ const Discover = () => {
               ))}
             </div>
 
+            {/* Info overlay */}
+            <div className="card-info">
+              <div className="card-header">
+                <div>
+                  <h2>{currentProfile.name}, {currentProfile.age}</h2>
+                  {theriotype && (
+                    <div className="theriotype-badge">
+                      <span>{theriotype.emoji}</span>
+                      <span>{theriotype.name}</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {currentProfile.bio && (
+                <p className="card-bio">{currentProfile.bio}</p>
+              )}
+            </div>
+
             {/* Info button */}
             <button
               className="info-button"
@@ -193,24 +212,6 @@ const Discover = () => {
             >
               <Info size={24} />
             </button>
-          </div>
-
-          <div className="card-info">
-            <div className="card-header">
-              <div>
-                <h2>{currentProfile.name}, {currentProfile.age}</h2>
-                {theriotype && (
-                  <div className="theriotype-badge">
-                    <span>{theriotype.emoji}</span>
-                    <span>{theriotype.name}</span>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {currentProfile.bio && (
-              <p className="card-bio">{currentProfile.bio}</p>
-            )}
           </div>
         </div>
 
