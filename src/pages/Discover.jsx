@@ -72,32 +72,19 @@ const Discover = () => {
 
       setSwipeCount(swipeCount + 1)
 
-      // Si es like, verificar si hay match
+      // Si es like, verificar si hay match usando la función de BD
       if (direction === 'like') {
-        const { data: reverseSwipe } = await supabase
-          .from('swipes')
-          .select('*')
-          .eq('swiper_id', currentProfile.user_id)
-          .eq('swiped_id', user.id)
-          .eq('direction', 'like')
-          .single()
-
-        if (reverseSwipe) {
-          // ¡Match! - Ordenar IDs correctamente
-          const userAId = user.id < currentProfile.user_id ? user.id : currentProfile.user_id
-          const userBId = user.id < currentProfile.user_id ? currentProfile.user_id : user.id
-
-          const { error: matchError } = await supabase.from('matches').insert({
-            user_a_id: userAId,
-            user_b_id: userBId,
-            is_active: true
+        const { data: matchResult, error: matchError } = await supabase
+          .rpc('check_and_create_match', {
+            p_swiper_id: user.id,
+            p_swiped_id: currentProfile.user_id
           })
 
-          if (matchError) {
-            console.error('Error creando match:', matchError)
-          } else {
-            setMatchModal(currentProfile)
-          }
+        if (matchError) {
+          console.error('Error verificando match:', matchError)
+        } else if (matchResult && matchResult.length > 0 && matchResult[0].match_created) {
+          // ¡Match creado! Mostrar modal
+          setMatchModal(currentProfile)
         }
       }
 
