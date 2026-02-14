@@ -81,6 +81,40 @@
   margin-top: 16px;
 }
 
+/* Matches Locked (Free Users) */
+.matches-locked {
+  text-align: center;
+  padding: 80px 20px;
+  background: var(--bg-secondary);
+  border-radius: 20px;
+  border: 2px solid var(--gold);
+}
+
+.lock-icon {
+  margin-bottom: 24px;
+}
+
+.matches-locked h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.matches-locked p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  margin-bottom: 32px;
+}
+
+.upgrade-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 32px;
+  font-size: 1.1rem;
+}
+
 .new-matches-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));

@@ -1,18 +1,22 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
+import { useSubscription } from '../hooks/useSubscription'
 import { supabase } from '../config/supabase'
-import { MessageCircle, Star } from 'lucide-react'
+import { MessageCircle, Star, Lock, Crown } from 'lucide-react'
 import { THERIOTYPES } from '../utils/constants'
 import './Matches.css'
 
 const Matches = () => {
   const navigate = useNavigate()
   const { user } = useAuth()
+  const { plan } = useSubscription()
   const [matches, setMatches] = useState([])
   const [newMatches, setNewMatches] = useState([])
   const [loading, setLoading] = useState(true)
   const [activeTab, setActiveTab] = useState('messages') // 'messages' or 'matches'
+
+  const canSeeMatches = plan?.features?.seeWhoLikedYou || false
 
   useEffect(() => {
     loadMatches()
@@ -183,7 +187,23 @@ const Matches = () => {
             {/* New Matches Grid (like Tinder) */}
             {activeTab === 'matches' && (
               <div className="new-matches-section">
-                {newMatches.length === 0 ? (
+                {!canSeeMatches ? (
+                  // Usuario gratuito - mostrar solo contador con upgrade prompt
+                  <div className="matches-locked">
+                    <div className="lock-icon">
+                      <Lock size={64} color="var(--gold)" />
+                    </div>
+                    <h2>Tienes {newMatches.length} {newMatches.length === 1 ? 'match' : 'matches'}</h2>
+                    <p>Mejora a Plus para ver quién te dio like</p>
+                    <button
+                      className="btn-primary upgrade-button"
+                      onClick={() => navigate('/subscription')}
+                    >
+                      <Crown size={20} />
+                      Ver planes Premium
+                    </button>
+                  </div>
+                ) : newMatches.length === 0 ? (
                   <div className="no-new-matches">
                     <Star size={48} color="var(--text-secondary)" />
                     <p>Los nuevos matches aparecerán aquí</p>

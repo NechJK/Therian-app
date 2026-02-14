@@ -8,18 +8,19 @@ export const SUBSCRIPTION_PLANS = {
     currency: 'USD',
     interval: 'forever',
     features: {
-      dailyLikes: 100,
-      dailySuperLikes: 1,
+      dailyLikes: 20,
+      dailySuperLikes: 0,
       dailyRewinds: 0,
       seeWhoLikedYou: false,
+      seeMatchCount: true,
       unlimitedLikes: false,
       boosts: 0,
       adFree: false,
       prioritySupport: false
     },
     limits: {
-      likes: '100 likes diarios',
-      superLikes: '1 Super Like diario',
+      likes: '20 likes diarios',
+      superLikes: 'Sin Super Likes',
       rewinds: 'Sin Rewind',
       features: 'Funciones básicas'
     },
@@ -29,7 +30,7 @@ export const SUBSCRIPTION_PLANS = {
   plus: {
     id: 'plus',
     name: 'Kindred Plus',
-    price: 9.99,
+    price: 4.99,
     currency: 'USD',
     interval: 'month',
     stripePriceId: 'price_kindred_plus_monthly', // Reemplazar con tu ID de Stripe
@@ -38,7 +39,8 @@ export const SUBSCRIPTION_PLANS = {
       dailyLikes: 999999,
       dailySuperLikes: 5,
       dailyRewinds: 3,
-      seeWhoLikedYou: false,
+      seeWhoLikedYou: true,
+      seeMatchCount: true,
       unlimitedLikes: true,
       boosts: 1,
       adFree: true,
@@ -48,7 +50,7 @@ export const SUBSCRIPTION_PLANS = {
       likes: 'Likes ilimitados',
       superLikes: '5 Super Likes diarios',
       rewinds: '3 Rewinds diarios',
-      features: 'Sin anuncios + 1 Boost mensual'
+      features: 'Ver quién te dio like + Sin anuncios'
     },
     badge: {
       text: 'PLUS',
@@ -59,7 +61,7 @@ export const SUBSCRIPTION_PLANS = {
   gold: {
     id: 'gold',
     name: 'Kindred Gold',
-    price: 19.99,
+    price: 8.99,
     currency: 'USD',
     interval: 'month',
     stripePriceId: 'price_kindred_gold_monthly', // Reemplazar con tu ID de Stripe
@@ -68,6 +70,7 @@ export const SUBSCRIPTION_PLANS = {
       dailySuperLikes: 10,
       dailyRewinds: 5,
       seeWhoLikedYou: true,
+      seeMatchCount: true,
       unlimitedLikes: true,
       boosts: 2,
       adFree: true,
@@ -88,7 +91,7 @@ export const SUBSCRIPTION_PLANS = {
   platinum: {
     id: 'platinum',
     name: 'Kindred Platinum',
-    price: 29.99,
+    price: 14.99,
     currency: 'USD',
     interval: 'month',
     stripePriceId: 'price_kindred_platinum_monthly', // Reemplazar con tu ID de Stripe
@@ -97,6 +100,7 @@ export const SUBSCRIPTION_PLANS = {
       dailySuperLikes: 999999,
       dailyRewinds: 999999,
       seeWhoLikedYou: true,
+      seeMatchCount: true,
       unlimitedLikes: true,
       boosts: 5,
       adFree: true,
@@ -123,14 +127,14 @@ export const PLAN_FEATURES = [
     features: [
       {
         name: 'Likes diarios',
-        free: '100',
+        free: '20',
         plus: 'Ilimitados',
         gold: 'Ilimitados',
         platinum: 'Ilimitados'
       },
       {
         name: 'Super Likes diarios',
-        free: '1',
+        free: '0',
         plus: '5',
         gold: '10',
         platinum: 'Ilimitados'
@@ -150,9 +154,16 @@ export const PLAN_FEATURES = [
       {
         name: 'Ver quién te dio like',
         free: false,
-        plus: false,
+        plus: true,
         gold: true,
         platinum: true
+      },
+      {
+        name: 'Ver lista de matches',
+        free: 'Solo contador',
+        plus: 'Completo',
+        gold: 'Completo',
+        platinum: 'Completo'
       },
       {
         name: 'Boosts mensuales',
