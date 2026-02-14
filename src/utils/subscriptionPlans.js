@@ -10,7 +10,7 @@ export const SUBSCRIPTION_PLANS = {
     features: {
       dailyLikes: 20,
       dailySuperLikes: 0,
-      dailyRewinds: 0,
+      dailyRewinds: 999999,
       seeWhoLikedYou: false,
       seeMatchCount: true,
       unlimitedLikes: false,
@@ -21,7 +21,7 @@ export const SUBSCRIPTION_PLANS = {
     limits: {
       likes: '20 likes diarios',
       superLikes: 'Sin Super Likes',
-      rewinds: 'Sin Rewind',
+      rewinds: 'Rewinds ilimitados',
       features: 'Funciones básicas'
     },
     badge: null
@@ -38,7 +38,7 @@ export const SUBSCRIPTION_PLANS = {
     features: {
       dailyLikes: 999999,
       dailySuperLikes: 5,
-      dailyRewinds: 3,
+      dailyRewinds: 999999,
       seeWhoLikedYou: true,
       seeMatchCount: true,
       unlimitedLikes: true,
@@ -49,7 +49,7 @@ export const SUBSCRIPTION_PLANS = {
     limits: {
       likes: 'Likes ilimitados',
       superLikes: '5 Super Likes diarios',
-      rewinds: '3 Rewinds diarios',
+      rewinds: 'Rewinds ilimitados',
       features: 'Ver quién te dio like + Sin anuncios'
     },
     badge: {
@@ -68,7 +68,7 @@ export const SUBSCRIPTION_PLANS = {
     features: {
       dailyLikes: 999999,
       dailySuperLikes: 10,
-      dailyRewinds: 5,
+      dailyRewinds: 999999,
       seeWhoLikedYou: true,
       seeMatchCount: true,
       unlimitedLikes: true,
@@ -79,7 +79,7 @@ export const SUBSCRIPTION_PLANS = {
     limits: {
       likes: 'Likes ilimitados',
       superLikes: '10 Super Likes diarios',
-      rewinds: '5 Rewinds diarios',
+      rewinds: 'Rewinds ilimitados',
       features: 'Ver quién te dio like + 2 Boosts mensuales'
     },
     badge: {
@@ -146,9 +146,9 @@ export const PLAN_FEATURES = [
     features: [
       {
         name: 'Rewind (deshacer swipe)',
-        free: false,
-        plus: '3 diarios',
-        gold: '5 diarios',
+        free: 'Ilimitados',
+        plus: 'Ilimitados',
+        gold: 'Ilimitados',
         platinum: 'Ilimitados'
       },
       {
