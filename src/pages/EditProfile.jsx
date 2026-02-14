@@ -296,7 +296,7 @@ const EditProfile = () => {
           <select value={gender} onChange={(e) => setGender(e.target.value)}>
             <option value="">Selecciona...</option>
             {GENDERS.map(g => (
-              <option key={g} value={g}>{g}</option>
+              <option key={g.id} value={g.id}>{g.label}</option>
             ))}
           </select>
         </div>
@@ -333,11 +333,11 @@ const EditProfile = () => {
           <div className="intentions-grid">
             {CONNECTION_INTENTIONS.map(intention => (
               <button
-                key={intention}
-                className={`intention-btn ${intentions.includes(intention) ? 'selected' : ''}`}
-                onClick={() => toggleIntention(intention)}
+                key={intention.id}
+                className={`intention-btn ${intentions.includes(intention.id) ? 'selected' : ''}`}
+                onClick={() => toggleIntention(intention.id)}
               >
-                {intention}
+                {intention.label}
               </button>
             ))}
           </div>

@@ -58,6 +58,10 @@ export const LIMITS = {
   MAX_AGE: 100
 }
 
+// Exportar también como constantes individuales para facilitar imports
+export const MIN_AGE = LIMITS.MIN_AGE
+export const MAX_AGE = LIMITS.MAX_AGE
+
 // Colores del tema
 export const COLORS = {
   background: '#0F0F12',
