@@ -15,6 +15,11 @@ import Chat from './pages/Chat'
 import Profile from './pages/Profile'
 import EditProfile from './pages/EditProfile'
 import Subscription from './pages/Subscription'
+import Settings from './pages/Settings'
+import TermsAndConditions from './pages/TermsAndConditions'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import Safety from './pages/Safety'
+import Help from './pages/Help'
 
 // Protected route wrapper
 const ProtectedRoute = ({ children }) => {
@@ -131,6 +136,36 @@ function App() {
           <Route path="/subscription" element={
             <ProtectedRoute>
               <Subscription />
+            </ProtectedRoute>
+          } />
+
+          <Route path="/settings" element={
+            <ProtectedRoute>
+              <Settings />
+            </ProtectedRoute>
+          } />
+
+          <Route path="/terms" element={
+            <ProtectedRoute>
+              <TermsAndConditions />
+            </ProtectedRoute>
+          } />
+
+          <Route path="/privacy" element={
+            <ProtectedRoute>
+              <PrivacyPolicy />
+            </ProtectedRoute>
+          } />
+
+          <Route path="/safety" element={
+            <ProtectedRoute>
+              <Safety />
+            </ProtectedRoute>
+          } />
+
+          <Route path="/help" element={
+            <ProtectedRoute>
+              <Help />
             </ProtectedRoute>
           } />
 

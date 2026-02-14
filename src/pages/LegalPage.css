@@ -1,0 +1,149 @@
+.legal-page {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  padding-bottom: 100px;
+}
+
+.legal-header {
+  position: sticky;
+  top: 0;
+  background: var(--bg-primary);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid var(--bg-tertiary);
+  z-index: 10;
+}
+
+.legal-header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.legal-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+
+.legal-updated {
+  background: var(--bg-tertiary);
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+section h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 16px;
+  margin-top: 32px;
+}
+
+section h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 20px 0 12px;
+}
+
+section p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+section ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 16px 0;
+}
+
+section ul li {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+  padding-left: 24px;
+  position: relative;
+}
+
+section ul li:before {
+  content: "•";
+  color: var(--gold);
+  font-weight: bold;
+  font-size: 1.3rem;
+  position: absolute;
+  left: 0;
+  top: -2px;
+}
+
+section ul li strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.contact-info {
+  background: var(--bg-secondary);
+  padding: 16px;
+  border-radius: 12px;
+  border-left: 4px solid var(--gold);
+}
+
+.contact-info a {
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+.legal-footer {
+  background: var(--bg-secondary);
+  padding: 24px;
+  border-radius: 16px;
+  margin-top: 48px;
+  text-align: center;
+  border: 2px solid var(--gold);
+}
+
+.legal-footer p {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .legal-container {
+    padding: 20px 16px;
+  }
+
+  section h2 {
+    font-size: 1.2rem;
+  }
+
+  section h3 {
+    font-size: 1rem;
+  }
+
+  section p,
+  section ul li {
+    font-size: 0.95rem;
+  }
+}

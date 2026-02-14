@@ -138,13 +138,13 @@ const Profile = () => {
               </div>
             )}
 
-            <div className="menu-item" onClick={() => navigate('/edit-profile')}>
+            <div className="menu-item" onClick={() => navigate('/settings')}>
               <div className="menu-item-icon" style={{ background: 'rgba(96, 165, 250, 0.2)' }}>
                 <Settings size={20} color="#60A5FA" />
               </div>
               <div className="menu-item-content">
                 <div className="menu-item-title">Configuración</div>
-                <div className="menu-item-subtitle">Privacidad, notificaciones</div>
+                <div className="menu-item-subtitle">Privacidad, notificaciones, idioma</div>
               </div>
               <ChevronRight size={20} color="var(--text-secondary)" />
             </div>
@@ -153,7 +153,7 @@ const Profile = () => {
           <h2 className="menu-section-title">Legal</h2>
 
           <div className="menu-section">
-            <div className="menu-item">
+            <div className="menu-item" onClick={() => navigate('/safety')}>
               <div className="menu-item-icon" style={{ background: 'rgba(74, 222, 128, 0.2)' }}>
                 <Shield size={20} color="#4ade80" />
               </div>
@@ -164,7 +164,7 @@ const Profile = () => {
               <ChevronRight size={20} color="var(--text-secondary)" />
             </div>
 
-            <div className="menu-item">
+            <div className="menu-item" onClick={() => navigate('/terms')}>
               <div className="menu-item-icon" style={{ background: 'rgba(251, 146, 60, 0.2)' }}>
                 <FileText size={20} color="#fb923c" />
               </div>
@@ -174,7 +174,7 @@ const Profile = () => {
               <ChevronRight size={20} color="var(--text-secondary)" />
             </div>
 
-            <div className="menu-item">
+            <div className="menu-item" onClick={() => navigate('/privacy')}>
               <div className="menu-item-icon" style={{ background: 'rgba(251, 146, 60, 0.2)' }}>
                 <FileText size={20} color="#fb923c" />
               </div>
@@ -184,7 +184,7 @@ const Profile = () => {
               <ChevronRight size={20} color="var(--text-secondary)" />
             </div>
 
-            <div className="menu-item">
+            <div className="menu-item" onClick={() => navigate('/help')}>
               <div className="menu-item-icon" style={{ background: 'rgba(139, 92, 246, 0.2)' }}>
                 <HelpCircle size={20} color="#8b5cf6" />
               </div>

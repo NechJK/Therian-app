@@ -1,0 +1,324 @@
+.safety-page {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  padding-bottom: 100px;
+}
+
+.safety-header {
+  position: sticky;
+  top: 0;
+  background: var(--bg-primary);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid var(--bg-tertiary);
+  z-index: 10;
+}
+
+.safety-header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.safety-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+
+/* Hero */
+.safety-hero {
+  text-align: center;
+  padding: 40px 20px;
+  background: var(--bg-secondary);
+  border-radius: 20px;
+  margin-bottom: 32px;
+}
+
+.safety-hero h2 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin: 20px 0 16px;
+}
+
+.safety-hero p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* Sections */
+.safety-section {
+  margin-bottom: 40px;
+}
+
+.safety-section h3 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+}
+
+/* Safety Cards */
+.safety-card {
+  background: var(--bg-secondary);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 16px;
+  border-left: 4px solid var(--gold);
+}
+
+.safety-card h4 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.safety-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.safety-card ul li {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  padding-left: 24px;
+  position: relative;
+}
+
+.safety-card ul li:before {
+  content: "→";
+  color: var(--gold);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+/* Tool Cards */
+.tool-card {
+  background: var(--bg-secondary);
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.tool-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tool-content {
+  flex: 1;
+}
+
+.tool-content h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.tool-content p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.tool-btn {
+  background: var(--bg-tertiary);
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tool-btn:hover {
+  background: rgba(200, 169, 110, 0.2);
+}
+
+/* Guideline Cards */
+.guideline-card {
+  background: var(--bg-secondary);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 16px;
+  border: 2px solid #f87171;
+}
+
+.guideline-card.positive {
+  border-color: #4ade80;
+}
+
+.guideline-card h4 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.guideline-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.guideline-card ul li {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  padding-left: 24px;
+  position: relative;
+}
+
+.guideline-card ul li:before {
+  content: "•";
+  color: #f87171;
+  font-weight: bold;
+  font-size: 1.3rem;
+  position: absolute;
+  left: 0;
+  top: -2px;
+}
+
+.guideline-card.positive ul li:before {
+  color: #4ade80;
+}
+
+/* Help Cards */
+.help-card {
+  background: var(--bg-secondary);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.help-card.emergency {
+  background: rgba(248, 113, 113, 0.1);
+  border: 2px solid #f87171;
+}
+
+.help-card h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 16px 0 12px;
+}
+
+.help-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.emergency-number {
+  font-size: 1.3rem !important;
+  font-weight: 700 !important;
+  color: #f87171 !important;
+  margin-top: 12px !important;
+}
+
+.help-link {
+  display: inline-block;
+  color: var(--gold);
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 12px 24px;
+  background: var(--bg-tertiary);
+  border-radius: 12px;
+  transition: all 0.2s;
+}
+
+.help-link:hover {
+  background: rgba(200, 169, 110, 0.2);
+}
+
+.help-link-btn {
+  background: var(--gold);
+  color: var(--bg-primary);
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.help-link-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* Resources */
+.resource-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.resource-item {
+  background: var(--bg-secondary);
+  padding: 16px 20px;
+  border-radius: 12px;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.2s;
+  border-left: 3px solid var(--gold);
+}
+
+.resource-item:hover {
+  background: var(--bg-tertiary);
+  transform: translateX(4px);
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .safety-container {
+    padding: 20px 16px;
+  }
+
+  .safety-hero {
+    padding: 32px 16px;
+  }
+
+  .safety-hero h2 {
+    font-size: 1.4rem;
+  }
+
+  .tool-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
