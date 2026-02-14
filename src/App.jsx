@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider, useAuth } from './hooks/useAuth'
+import { SubscriptionProvider } from './hooks/useSubscription'
 import BottomNav from './components/BottomNav'
 import ProfileCheck from './components/ProfileCheck'
 
@@ -13,6 +14,7 @@ import Matches from './pages/Matches'
 import Chat from './pages/Chat'
 import Profile from './pages/Profile'
 import EditProfile from './pages/EditProfile'
+import Subscription from './pages/Subscription'
 
 // Protected route wrapper
 const ProtectedRoute = ({ children }) => {
@@ -70,7 +72,8 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <Routes>
+        <SubscriptionProvider>
+          <Routes>
           {/* Public routes */}
           <Route path="/" element={<PublicRoute><Welcome /></PublicRoute>} />
           <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
@@ -125,9 +128,16 @@ function App() {
             </ProtectedRoute>
           } />
 
+          <Route path="/subscription" element={
+            <ProtectedRoute>
+              <Subscription />
+            </ProtectedRoute>
+          } />
+
           {/* Catch all - redirect to home */}
           <Route path="*" element={<Navigate to="/" />} />
-        </Routes>
+          </Routes>
+        </SubscriptionProvider>
       </AuthProvider>
     </Router>
   )
