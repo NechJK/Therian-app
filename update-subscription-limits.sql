@@ -25,20 +25,20 @@ BEGIN
 
   CASE v_plan_type
     WHEN 'free' THEN
-      -- FREE: 20 likes, 0 super likes, no puede ver quién le dio like
-      RETURN QUERY SELECT 20::integer, 0::integer, 0::integer, false, false, false, false;
+      -- FREE: 20 likes, 0 super likes, rewinds ilimitados, no puede ver quién le dio like
+      RETURN QUERY SELECT 20::integer, 0::integer, 999999::integer, false, false, false, false;
     WHEN 'plus' THEN
-      -- PLUS ($4.99): Ilimitado, 5 super likes, 3 rewinds, SÍ puede ver quién le dio like
-      RETURN QUERY SELECT 999999::integer, 5::integer, 3::integer, true, true, true, true;
+      -- PLUS ($4.99): Ilimitado, 5 super likes, rewinds ilimitados, SÍ puede ver quién le dio like
+      RETURN QUERY SELECT 999999::integer, 5::integer, 999999::integer, true, true, true, true;
     WHEN 'gold' THEN
-      -- GOLD ($8.99): Ilimitado, 10 super likes, 5 rewinds, ver quién le dio like
-      RETURN QUERY SELECT 999999::integer, 10::integer, 5::integer, true, true, true, true;
+      -- GOLD ($8.99): Ilimitado, 10 super likes, rewinds ilimitados, ver quién le dio like
+      RETURN QUERY SELECT 999999::integer, 10::integer, 999999::integer, true, true, true, true;
     WHEN 'platinum' THEN
       -- PLATINUM ($14.99): Todo ilimitado
       RETURN QUERY SELECT 999999::integer, 999999::integer, 999999::integer, true, true, true, true;
     ELSE
       -- Default a free
-      RETURN QUERY SELECT 20::integer, 0::integer, 0::integer, false, false, false, false;
+      RETURN QUERY SELECT 20::integer, 0::integer, 999999::integer, false, false, false, false;
   END CASE;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
