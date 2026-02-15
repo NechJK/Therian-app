@@ -17,6 +17,7 @@ const Discover = () => {
   const startX = useRef(0)
   const currentX = useRef(0)
   const [isDragging, setIsDragging] = useState(false)
+  const [swipeDirection, setSwipeDirection] = useState(null)
 
   useEffect(() => {
     loadProfiles()
@@ -110,12 +111,20 @@ const Discover = () => {
     if (cardRef.current) {
       cardRef.current.style.transform = `translateX(${diff}px) rotate(${diff * 0.05}deg)`
       cardRef.current.style.transition = 'none'
+
+      // Show overlay based on swipe direction
+      if (Math.abs(diff) > 50) {
+        setSwipeDirection(diff > 0 ? 'like' : 'nope')
+      } else {
+        setSwipeDirection(null)
+      }
     }
   }
 
   const handleTouchEnd = () => {
     if (!isDragging) return
     setIsDragging(false)
+    setSwipeDirection(null)
 
     const diff = currentX.current - startX.current
 
@@ -159,59 +168,69 @@ const Discover = () => {
   return (
     <div className="discover-page">
       <div className="discover-container">
-        <div
-          ref={cardRef}
-          className="profile-card"
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
-          onClick={handleCardClick}
-        >
-          <div className="card-image">
-            <img
-              src={currentProfile.photos[currentPhotoIndex]}
-              alt={currentProfile.name}
-            />
+        <div className="card-stack">
+          <div
+            ref={cardRef}
+            className="profile-card"
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            onClick={handleCardClick}
+          >
+            <div className="card-image">
+              <img
+                src={currentProfile.photos[currentPhotoIndex]}
+                alt={currentProfile.name}
+              />
 
-            {/* Photo indicators */}
-            <div className="photo-indicators">
-              {currentProfile.photos.map((_, index) => (
-                <div
-                  key={index}
-                  className={`indicator ${index === currentPhotoIndex ? 'active' : ''}`}
-                />
-              ))}
-            </div>
-
-            {/* Info overlay */}
-            <div className="card-info">
-              <div className="card-header">
-                <div>
-                  <h2>{currentProfile.name}, {currentProfile.age}</h2>
-                  {theriotype && (
-                    <div className="theriotype-badge">
-                      <span>{theriotype.emoji}</span>
-                      <span>{theriotype.name}</span>
-                    </div>
-                  )}
-                </div>
+              {/* Photo indicators */}
+              <div className="photo-indicators">
+                {currentProfile.photos.map((_, index) => (
+                  <div
+                    key={index}
+                    className={`indicator ${index === currentPhotoIndex ? 'active' : ''}`}
+                  />
+                ))}
               </div>
 
-              {currentProfile.bio && (
-                <p className="card-bio">{currentProfile.bio}</p>
-              )}
-            </div>
+              {/* Swipe overlays */}
+              <div className={`swipe-overlay like ${swipeDirection === 'like' ? 'visible' : ''}`}>
+                LIKE
+              </div>
+              <div className={`swipe-overlay nope ${swipeDirection === 'nope' ? 'visible' : ''}`}>
+                NOPE
+              </div>
 
-            {/* Info button */}
-            <button
-              className="info-button"
-              onClick={(e) => {
-                e.stopPropagation()
-                setShowProfile(true)
-              }}
-            >
-              <Info size={24} />
-            </button>
+              {/* Info overlay */}
+              <div className="card-info">
+                <div className="card-header">
+                  <div>
+                    <h2>{currentProfile.name}, {currentProfile.age}</h2>
+                    {theriotype && (
+                      <div className="theriotype-badge">
+                        <span>{theriotype.emoji}</span>
+                        <span>{theriotype.name}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {currentProfile.bio && (
+                  <p className="card-bio">{currentProfile.bio}</p>
+                )}
+              </div>
+
+              {/* Info button */}
+              <button
+                className="info-button"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setShowProfile(true)
+                }}
+              >
+                <Info size={24} />
+              </button>
+            </div>
           </div>
         </div>
 
