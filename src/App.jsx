@@ -20,6 +20,7 @@ import TermsAndConditions from './pages/TermsAndConditions'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import Safety from './pages/Safety'
 import Help from './pages/Help'
+import DeleteAccount from './pages/DeleteAccount'
 
 // Protected route wrapper
 const ProtectedRoute = ({ children }) => {
@@ -166,6 +167,12 @@ function App() {
           <Route path="/help" element={
             <ProtectedRoute>
               <Help />
+            </ProtectedRoute>
+          } />
+
+          <Route path="/delete-account" element={
+            <ProtectedRoute>
+              <DeleteAccount />
             </ProtectedRoute>
           } />
 
